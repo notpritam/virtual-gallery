@@ -9,6 +9,7 @@ function HomePage() {
   //   const sectionRef = useRef(null);
   //   const triggerRef = useRef(null);
   const imageRef = useRef(null);
+  const imageHeaderRef = useRef(null);
 
   //   gsap.registerPlugin(ScrollTrigger);
 
@@ -41,6 +42,7 @@ function HomePage() {
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+
     gsap.to(".happyFace", {
       rotate: 360,
       duration: 1.5,
@@ -49,16 +51,27 @@ function HomePage() {
     });
 
     gsap.to("._heroHeader", {
-      top: "-110%",
+      top: "-100%",
       duration: 2.5,
       ease: "expo.easeout",
 
       scrollTrigger: {
         trigger: imageRef.current,
-        start: "center-10% center",
-        // end: "bottom bottom",
+        start: "center center",
+        end: "bottom bottom",
         scrub: true,
         markers: true,
+      },
+    });
+
+    gsap.to(imageHeaderRef.current, {
+      scale: 1,
+      duration: 3,
+      scrollTrigger: {
+        trigger: imageRef.current,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
       },
     });
 
@@ -82,7 +95,7 @@ function HomePage() {
         <span className="uppercase text-[14px]">Thank You!!</span>
       </header>
       <div>
-        <div className="h-[70vh] top-0 absolute bg-background w-full _heroHeader flex-col justify-between flex border-b-[1px] border-borderColor">
+        <div className="h-[70vh]  z-[998] top-0 absolute bg-background w-full _heroHeader flex-col justify-between flex border-b-[1px] border-borderColor">
           <div className="flex  flex-col justify-center items-center w-[80%] m-auto">
             <img className="h-[1.75rem] w-[1.75rem]" src={star}></img>
             <span className="text-[2.2857rem] leading-[2.2857rem]">
@@ -107,12 +120,13 @@ function HomePage() {
         </div>
 
         <div
-          className="h-[120vh] w-full mt-[10rem]   _heroImage overflow-hidden"
+          className="h-[100vh] w-full mt-[10rem]   _heroImage overflow-hidden"
           ref={imageRef}
         >
           <div className="h-full w-full overflow-hidden">
             <img
-              className="object-cover object-center h-full w-full  _image"
+              ref={imageHeaderRef}
+              className="object-cover scale-150 object-center h-full w-full  _image"
               src="https://virtual-gallery.okeystudio.com/photo1.42abc711.webp"
             ></img>
           </div>
