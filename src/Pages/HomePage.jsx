@@ -159,7 +159,7 @@ function HomePage() {
           <span className="uppercase text-[22rem] font-medium">Thanks</span>
         </div>
 
-        <div className="flex h-full w-full bg-red-700">
+        <div className="flex h-screen w-screen bg-red-700">
           <div className="h-full">
             <img src="https://virtual-gallery.okeystudio.com/duo-photo1.589f3a05.webp"></img>
           </div>
