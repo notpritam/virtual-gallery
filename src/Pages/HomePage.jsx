@@ -65,12 +65,12 @@ function HomePage() {
     });
 
     gsap.to(imageHeaderRef.current, {
-      scale: 1,
+      scale: 1.5,
       duration: 3,
       scrollTrigger: {
-        trigger: imageRef.current,
-        start: "top top",
-        end: "bottom bottom",
+        trigger: imageHeaderRef.current,
+        start: "center center",
+        end: "top+20% center",
         scrub: true,
       },
     });
@@ -119,16 +119,28 @@ function HomePage() {
           </div>
         </div>
 
-        <div
-          className="h-[100vh] w-full mt-[10rem]   _heroImage overflow-hidden"
-          ref={imageRef}
-        >
-          <div className="h-full w-full overflow-hidden">
+        <div className="container flex w-full flex-nowrap">
+          <div
+            className="h-screen w-screen mt-[10rem]   _heroImage overflow-hidden"
+            ref={imageRef}
+          >
             <img
               ref={imageHeaderRef}
-              className="object-cover scale-150 object-center h-full w-full  _image"
+              className="object-cover scale-100 object-center h-screen w-full  _image"
               src="https://virtual-gallery.okeystudio.com/photo1.42abc711.webp"
             ></img>
+          </div>
+
+          <div className="  flex justify-center flex-col w-[18rem] gap-2">
+            <div className="h-[18rem] w-[18rem]">
+              <img src="https://virtual-gallery.okeystudio.com/photo2.ca0d9d58.webp"></img>
+            </div>
+            <div>
+              <span className="text-[.81rem] uppercase ">
+                DEAR PHOTOGRAPHERS, YOU ARE CELEBRATED TODAY IN THIS LITTLE
+                VIRTUAL PHOTOGRAPHIC GALLERY.
+              </span>
+            </div>
           </div>
         </div>
       </div>
