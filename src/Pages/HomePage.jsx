@@ -143,6 +143,43 @@ function HomePage() {
             </div>
           </div>
         </div>
+
+        <div className="w-screen relative h-screen flex justify-center items-center">
+          <div className="h-[12rem] w-[13rem] rotate-6 absolute top-[15%] left-[10%]">
+            <img src="https://virtual-gallery.okeystudio.com/thanks-1.c050f96d.webp"></img>
+          </div>
+
+          <div className="h-[10rem] w-[13rem] rotate-[-6deg] absolute top-[13%] right-[9%]">
+            <img src="https://virtual-gallery.okeystudio.com/thanks-2.5b322fb7.webp"></img>
+          </div>
+
+          <div className="h-[9rem] rotate-2 w-[13rem] absolute bottom-[16%] ">
+            <img src="https://virtual-gallery.okeystudio.com/thanks-3.48846b1e.webp"></img>
+          </div>
+          <span className="uppercase text-[22rem] font-medium">Thanks</span>
+        </div>
+
+        <div className="flex h-full w-full bg-red-700">
+          <div className="h-full">
+            <img src="https://virtual-gallery.okeystudio.com/duo-photo1.589f3a05.webp"></img>
+          </div>
+          <div className="h-full">
+            <img src="https://virtual-gallery.okeystudio.com/duo-photo2.94837066.webp"></img>
+          </div>
+          <div className="flex flex-col">
+            <span className="text-[1.2rem] uppercase mb-[6px] font-semibold">
+              YOU’RE SO GOOD!
+            </span>
+            <span className="font-light text-[.8rem] ">
+              First of all, thank you so much for sharing your photos with
+              everyone, and secondly, thank you for being so awesome!
+            </span>
+            <img
+              className="w-[13rem] h-[16rem]"
+              src="https://virtual-gallery.okeystudio.com/sogood.da0ed801.webp"
+            ></img>
+          </div>
+        </div>
       </div>
     </>
   );
