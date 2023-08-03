@@ -10,6 +10,7 @@ function HomePage() {
   //   const triggerRef = useRef(null);
   const imageRef = useRef(null);
   const imageHeaderRef = useRef(null);
+  const containerRef = useRef(null);
 
   //   gsap.registerPlugin(ScrollTrigger);
 
@@ -64,16 +65,42 @@ function HomePage() {
       },
     });
 
-    gsap.to(imageHeaderRef.current, {
-      scale: 1.5,
-      duration: 3,
-      scrollTrigger: {
-        trigger: imageHeaderRef.current,
-        start: "center center",
-        end: "top+20% center",
-        scrub: true,
+    gsap.fromTo(
+      imageHeaderRef.current,
+      {
+        scale: 1,
       },
-    });
+      {
+        scale: 1.5,
+        duration: 3,
+        scrollTrigger: {
+          trigger: imageHeaderRef.current,
+          start: "center center",
+          end: "top+20% center",
+          scrub: true,
+        },
+      }
+    );
+
+    const container = containerRef.current;
+
+    let tl = gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: container,
+          scrub: 1,
+          pin: true,
+          start: "top top",
+          end: "+=3300",
+        },
+      })
+      .to(container, {
+        x: () =>
+          -(container.scrollWidth - document.documentElement.clientWidth - 95) +
+          "px",
+        ease: "none",
+        duration: 1,
+      });
 
     // gsap.to("_image", {
     //   scale: 1,
@@ -94,7 +121,7 @@ function HomePage() {
         <span className="uppercase text-[14px]">Virtual Gallery</span>
         <span className="uppercase text-[14px]">Thank You!!</span>
       </header>
-      <div>
+      <div className="w-[3000vw] flex" ref={containerRef}>
         <div className="h-[70vh]  z-[998] top-0 absolute bg-background w-full _heroHeader flex-col justify-between flex border-b-[1px] border-borderColor">
           <div className="flex  flex-col justify-center items-center w-[80%] m-auto">
             <img className="h-[1.75rem] w-[1.75rem]" src={star}></img>
@@ -119,28 +146,26 @@ function HomePage() {
           </div>
         </div>
 
-        <div className="container flex w-full flex-nowrap">
-          <div
-            className="h-screen w-screen mt-[10rem]   _heroImage overflow-hidden"
-            ref={imageRef}
-          >
-            <img
-              ref={imageHeaderRef}
-              className="object-cover scale-100 object-center h-screen w-full  _image"
-              src="https://virtual-gallery.okeystudio.com/photo1.42abc711.webp"
-            ></img>
-          </div>
+        <div
+          className="h-screen w-screen mt-[10rem]   _heroImage overflow-hidden"
+          ref={imageRef}
+        >
+          <img
+            ref={imageHeaderRef}
+            className=" object-cover block object-center h-full w-full _image  "
+            src="https://virtual-gallery.okeystudio.com/photo1.42abc711.webp"
+          ></img>
+        </div>
 
-          <div className="  flex justify-center flex-col w-[18rem] gap-2">
-            <div className="h-[18rem] w-[18rem]">
-              <img src="https://virtual-gallery.okeystudio.com/photo2.ca0d9d58.webp"></img>
-            </div>
-            <div>
-              <span className="text-[.81rem] uppercase ">
-                DEAR PHOTOGRAPHERS, YOU ARE CELEBRATED TODAY IN THIS LITTLE
-                VIRTUAL PHOTOGRAPHIC GALLERY.
-              </span>
-            </div>
+        <div className="  flex justify-center flex-col w-[18rem] gap-2">
+          <div className="h-[18rem] w-[18rem]">
+            <img src="https://virtual-gallery.okeystudio.com/photo2.ca0d9d58.webp"></img>
+          </div>
+          <div>
+            <span className="text-[.81rem] uppercase ">
+              DEAR PHOTOGRAPHERS, YOU ARE CELEBRATED TODAY IN THIS LITTLE
+              VIRTUAL PHOTOGRAPHIC GALLERY.
+            </span>
           </div>
         </div>
 
@@ -159,14 +184,20 @@ function HomePage() {
           <span className="uppercase text-[22rem] font-medium">Thanks</span>
         </div>
 
-        <div className="flex h-screen w-screen bg-red-700">
-          <div className="h-full">
-            <img src="https://virtual-gallery.okeystudio.com/duo-photo1.589f3a05.webp"></img>
+        <div className="flex h-screen w-screen overflow-hidden ">
+          <div className="h-full ">
+            <img
+              className="object-cover"
+              src="https://virtual-gallery.okeystudio.com/duo-photo1.589f3a05.webp"
+            ></img>
           </div>
           <div className="h-full">
-            <img src="https://virtual-gallery.okeystudio.com/duo-photo2.94837066.webp"></img>
+            <img
+              className="object-cover"
+              src="https://virtual-gallery.okeystudio.com/duo-photo2.94837066.webp"
+            ></img>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col h-full pt-12">
             <span className="text-[1.2rem] uppercase mb-[6px] font-semibold">
               YOU’RE SO GOOD!
             </span>
@@ -177,6 +208,42 @@ function HomePage() {
             <img
               className="w-[13rem] h-[16rem]"
               src="https://virtual-gallery.okeystudio.com/sogood.da0ed801.webp"
+            ></img>
+          </div>
+        </div>
+
+        <div className="h-screen w-screen relative">
+          <div className="absolute top-[10%] left-[5%] h-[32vh] w-[14rem] ">
+            <img
+              className="object-cover h-full w-full"
+              src="https://virtual-gallery.okeystudio.com/groupe-left3.efb189cc.webp"
+            ></img>
+          </div>
+          <div className="absolute bottom-[10%] left-[8%] h-[32vh] w-[14rem] ">
+            <img
+              className="object-cover h-full w-full"
+              src="https://virtual-gallery.okeystudio.com/groupe-left1.c49c55ae.webp"
+            ></img>
+          </div>
+
+          <div className="absolute right-[10%] top-[3%] h-[34vh] w-[14rem] ">
+            <img
+              className="object-cover h-full w-full"
+              src="https://virtual-gallery.okeystudio.com/groupe-left2.b48efad2.webp"
+            ></img>
+          </div>
+
+          <div className="absolute left-[50%] translate-x-[-50%] translate-y-[-50%] top-[50%] h-full w-[40%] ">
+            <img
+              className="object-cover h-full w-full"
+              src="https://virtual-gallery.okeystudio.com/groupe-centre1.3e60ca62.webp"
+            ></img>
+          </div>
+
+          <div className="absolute bottom-[10%] right-[5%] h-[40vh] w-[18rem] ">
+            <img
+              className="object-cover h-full w-full"
+              src="https://virtual-gallery.okeystudio.com/groupe-right1.da033ec5.webp"
             ></img>
           </div>
         </div>
