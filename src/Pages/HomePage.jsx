@@ -61,7 +61,6 @@ function HomePage() {
         start: "center center",
         end: "bottom bottom",
         scrub: true,
-        markers: true,
       },
     });
 
@@ -88,7 +87,7 @@ function HomePage() {
       .timeline({
         scrollTrigger: {
           trigger: container,
-          scrub: 1,
+          scrub: true,
           pin: true,
           start: "top top",
           end: "+=3300",
@@ -109,7 +108,7 @@ function HomePage() {
         <span className="uppercase text-[14px]">Virtual Gallery</span>
         <span className="uppercase text-[14px]">Thank You!!</span>
       </header>
-      <div className="w-[3000vw] flex" ref={containerRef}>
+      <div className="flex flex-nowrap" ref={containerRef}>
         <div className="h-[70vh]  z-[998] top-0 absolute bg-background w-full _heroHeader flex-col justify-between flex border-b-[1px] border-borderColor">
           <div className="flex  flex-col justify-center items-center w-[80%] m-auto">
             <img className="h-[1.75rem] w-[1.75rem]" src={star}></img>
