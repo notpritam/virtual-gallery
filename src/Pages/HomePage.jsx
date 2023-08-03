@@ -101,18 +101,6 @@ function HomePage() {
         ease: "none",
         duration: 1,
       });
-
-    // gsap.to("_image", {
-    //   scale: 1,
-    //   duration: 2,
-    //   scrollTrigger: {
-    //     trigger: "._heroHeader",
-    //     start: "top top",
-    //     // end: "bottom top",
-    //     scrub: true,
-    //     markers: true,
-    //   },
-    // });
   }, []);
 
   return (
