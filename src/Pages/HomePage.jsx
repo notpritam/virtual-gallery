@@ -135,7 +135,7 @@ function HomePage() {
         </div>
 
         <div
-          className="h-screen w-screen mt-[10rem]   _heroImage overflow-hidden"
+          className="h-screen w-screen mt-[10rem]  _heroImage overflow-hidden"
           ref={imageRef}
         >
           <img
