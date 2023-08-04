@@ -5,7 +5,7 @@ function DearDiv() {
     <>
       <section className="h-screen w-auto bg-red-300">
         <div className="flex">
-          <div className="  flex justify-center flex-col w-[18rem] gap-2">
+          <div className="flex justify-center flex-col w-[18rem] gap-2">
             <div className="h-[18rem] w-[18rem]">
               <img src="https://virtual-gallery.okeystudio.com/photo2.ca0d9d58.webp"></img>
             </div>
