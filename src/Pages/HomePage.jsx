@@ -10,31 +10,57 @@ function HomePage() {
   //   const triggerRef = useRef(null);
   const imageRef = useRef(null);
   const imageHeaderRef = useRef(null);
+
   const containerRef = useRef(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-
-    gsap.to(".happyFace", {
-      rotate: 360,
-      duration: 1.5,
-      repeat: -1,
-      ease: "linear",
-    });
-
     const container = containerRef.current;
-    const sections = gsap.utils.toArray("._container > section");
+    const sections = container.querySelectorAll("section");
 
-    let tl = gsap.to(sections, {
-      xPercent: -100 * (sections.length - 1),
+    // Calculate the total width of all sections
+    const totalWidth = Array.from(sections).reduce(
+      (acc, section) => acc + section.clientWidth,
+      0
+    );
+
+    gsap.set(container, { x: 0, width: totalWidth });
+
+    gsap.to(container, {
+      x: -100 * (sections.length - 1),
       ease: "none",
       scrollTrigger: {
-        trigger: "._container",
+        trigger: container,
+        scrub: true,
         pin: true,
-        scrub: 1,
-        end: "+=3000",
+        end: "+=300%",
       },
     });
+
+    // useLayoutEffect(() => {
+    //   gsap.registerPlugin(ScrollTrigger);
+
+    //   gsap.to(".happyFace", {
+    //     rotate: 360,
+    //     duration: 1.5,
+    //     repeat: -1,
+    //     ease: "linear",
+    //   });
+
+    //   const container = containerRef.current;
+
+    //   let sections = gsap.utils.toArray(".container > section");
+
+    //   let scrollTween = gsap.to(sections, {
+    //     xPercent: -100 * (sections.length - 1),
+    //     ease: "none",
+    //     scrollTrigger: {
+    //       trigger: container,
+    //       pin: true,
+    //       scrub: 0.1,
+    //       end: "+=3000",
+    //     },
+    //   });
   }, []);
 
   return (
@@ -44,9 +70,12 @@ function HomePage() {
         <span className="uppercase text-[14px]">Virtual Gallery</span>
         <span className="uppercase text-[14px]">Thank You!!</span>
       </header>
-      <div className="flex _container" ref={containerRef}>
-        <section className="w-screen h-screen">
-          <div className="h-[70%]  z-[998] top-0 absolute bg-background w-full _heroHeader flex-col justify-between flex border-b-[1px] border-borderColor">
+      <div
+        className=" h-screen relative flex flex-nowrap w-[500%] container"
+        ref={containerRef}
+      >
+        <section className="min-w-[100vw] bg-red-400 min-h-[100vh] relative overflow-hidden">
+          <div className="h-[70vh] w-full relative  z-[998]  bg-background _heroHeader flex-col justify-between flex border-b-[1px] border-borderColor">
             <div className="flex  flex-col justify-center items-center w-[80%] m-auto">
               <img className="h-[1.75rem] w-[1.75rem]" src={star}></img>
               <span className="text-[2.2857rem] leading-[2.2857rem] font-medium">
@@ -69,15 +98,15 @@ function HomePage() {
               ></img>
             </div>
           </div>
-          <div className="h-screen w-screen sticky top-0  _heroImage overflow-hidden">
+          <div className="h-screen w-screen absolute top-0   _heroImage overflow-hidden">
             <img
-              className="object-cover object-center  _image"
+              className="object-cover h-full w-full object-center  _image"
               src="https://virtual-gallery.okeystudio.com/photo1.42abc711.webp"
             ></img>
           </div>
         </section>
 
-        <section>
+        <section className="w-screen h-screen">
           <div className="flex">
             <div className="  flex justify-center flex-col w-[18rem] gap-2">
               <div className="h-[18rem] w-[18rem]">
@@ -93,7 +122,7 @@ function HomePage() {
           </div>
         </section>
 
-        <section className="">
+        <section className="w-screen h-screen">
           <div className="w-screen relative h-screen flex justify-center items-center">
             <div className="h-[12rem] w-[13rem] rotate-6 absolute top-[15%] left-[10%]">
               <img src="https://virtual-gallery.okeystudio.com/thanks-1.c050f96d.webp"></img>
@@ -110,7 +139,7 @@ function HomePage() {
           </div>
         </section>
 
-        <section>
+        <section className="w-screen h-screen">
           <div className="flex h-screen w-screen overflow-hidden ">
             <div className="h-full ">
               <img
@@ -140,7 +169,7 @@ function HomePage() {
           </div>
         </section>
 
-        <section>
+        <section className="w-screen h-screen">
           <div className="h-screen w-screen relative">
             <div className="absolute top-[10%] left-[5%] h-[32vh] w-[14rem] ">
               <img
