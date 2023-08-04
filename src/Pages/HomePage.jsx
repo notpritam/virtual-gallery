@@ -1,9 +1,9 @@
 import React, { useEffect, useLayoutEffect, useRef } from "react";
-import star from "../assets/star.svg";
-import happyFace from "../assets/happyFace.svg";
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Hero from "../Components/Hero";
+import DearDiv from "../Components/DearDiv";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,19 +22,12 @@ function HomePage() {
         scrollTrigger: {
           trigger: slider.current,
           pin: true,
-          scrub: 1,
-          snap: 1 / (panels.length - 1),
+          scrub: true,
           end: () => "+=" + slider.current.offsetWidth,
         },
       });
-
-      gsap.to(".happyFace", {
-        rotate: 360,
-        duration: 1.5,
-        repeat: -1,
-        ease: "linear",
-      });
     }, component);
+
     return () => ctx.revert();
   });
 
@@ -49,54 +42,8 @@ function HomePage() {
           className=" h-screen relative flex flex-nowrap w-[500vw] container"
           ref={slider}
         >
-          <section className="min-w-[100vw] bg-red-400 min-h-[100vh] relative overflow-hidden">
-            <div className="h-[70vh] w-full relative  z-[998]  bg-background _heroHeader flex-col justify-between flex border-b-[1px] border-borderColor">
-              <div className="flex  flex-col justify-center items-center w-[80%] m-auto">
-                <img className="h-[1.75rem] w-[1.75rem]" src={star}></img>
-                <span className="text-[2.2857rem] leading-[2.2857rem] font-medium">
-                  PHOTOGRAPHER'S
-                </span>
-                <span className="text-[7.1429rem] leading-[7.1429rem] font-semibold">
-                  CELEBRATION
-                </span>
-                <span className="w-[40%] text-center text-[14px] ">
-                  TODAY WE WANT TO HONOR ALL THE PHOTOGRAPHERS WHO GENEROUSLY
-                  SHARE THEIR PICTURES WITH THE WORLD. THIS WEBSITE IS A
-                  CELEBRATION OF THEIR TALENT!
-                </span>
-              </div>
-              <div className="p-4 flex gap-2 items-center">
-                <span className="uppercase text-[14px]">Enjoy Your Visit</span>
-                <img
-                  className="h-[1.5rem] w-[1.5rem] happyFace"
-                  src={happyFace}
-                ></img>
-              </div>
-            </div>
-            <div className="h-screen w-screen absolute top-0   _heroImage overflow-hidden">
-              <img
-                className="object-cover h-full w-full object-center  _image"
-                src="https://virtual-gallery.okeystudio.com/photo1.42abc711.webp"
-              ></img>
-            </div>
-          </section>
-
-          <section className=" h-screen">
-            <div className="flex">
-              <div className="  flex justify-center flex-col w-[18rem] gap-2">
-                <div className="h-[18rem] w-[18rem]">
-                  <img src="https://virtual-gallery.okeystudio.com/photo2.ca0d9d58.webp"></img>
-                </div>
-                <div>
-                  <span className="text-[.81rem] uppercase ">
-                    DEAR PHOTOGRAPHERS, YOU ARE CELEBRATED TODAY IN THIS LITTLE
-                    VIRTUAL PHOTOGRAPHIC GALLERY.
-                  </span>
-                </div>
-              </div>
-            </div>
-          </section>
-
+          <Hero />
+          <DearDiv />
           <section className="w-screen h-screen">
             <div className="w-screen relative h-screen flex justify-center items-center">
               <div className="h-[12rem] w-[13rem] rotate-6 absolute top-[15%] left-[10%]">
