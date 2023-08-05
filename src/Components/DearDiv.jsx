@@ -3,7 +3,7 @@ import React from "react";
 function DearDiv() {
   return (
     <>
-      <section className="h-screen w-auto bg-red-300">
+      <section className="h-screen relative w-auto bg-red-300">
         <div className="flex">
           <div className="flex justify-center flex-col w-[18rem] gap-2">
             <div className="h-[18rem] w-[18rem]">

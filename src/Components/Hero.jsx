@@ -14,42 +14,9 @@ function Hero() {
     });
   }, []);
   // const slider = useRef();
-
-  // useLayoutEffect(() => {
-  //   let ctx = gsap.context(() => {
-  //     let panels = gsap.utils.toArray(".container > section");
-  //     gsap.to(panels, {
-  //       xPercent: -100 * (panels.length - 1),
-  //       ease: "none",
-  //       scrollTrigger: {
-  //         trigger: slider.current,
-  //         pin: true,
-  //         scrub: 1,
-
-  //         end: () => "+=" + slider.current.offsetWidth,
-  //       },
-  //     });
-
-  //     gsap.to(".happyFace", {
-  //       rotate: 360,
-  //       duration: 1.5,
-  //       repeat: -1,
-  //       ease: "linear",
-  //     });
-
-  //     // gsap.to("._heroDIV", {
-  //     //   scrollTrigger: {
-  //     //     pin: true,
-  //     //     trigger: "._heroDIV",
-  //     //   },
-  //     // });
-  //   }, component);
-
-  //   return () => ctx.revert();
-  // });
   return (
     <>
-      <section className="min-w-[100vw] _heroDIV min-h-[100vh] relative overflow-hidden bg-transparent">
+      <section className="min-w-[100vw] _heroDIV min-h-[100vh] relative overflow-hidden bg-transparent heroSection">
         <div className="h-[70vh] w-full absolute  z-[998]  bg-background _heroHeader flex-col justify-between flex border-b-[1px] border-borderColor">
           <div className="flex  flex-col justify-center items-center w-[80%] m-auto">
             <img className="h-[1.75rem] w-[1.75rem]" src={star}></img>
@@ -73,12 +40,12 @@ function Hero() {
             ></img>
           </div>
         </div>
-        <div className="h-[100vh] relative  w-[100vw]   overflow-hidden">
+        <section className="h-[100vh] w-[100vw]  overflow-hidden">
           <img
-            className="w-full h-full object-cover object-center"
+            className="w-[100vw] h-[100vh] absolute  top-0 object-cover object-center"
             src="https://virtual-gallery.okeystudio.com/photo1.42abc711.webp"
           ></img>
-        </div>
+        </section>
       </section>
     </>
   );
