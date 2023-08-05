@@ -4,6 +4,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Hero from "../Components/Hero";
 import DearDiv from "../Components/DearDiv";
+import Lenis from "@studio-freight/lenis";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,6 +14,18 @@ function HomePage() {
 
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      });
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+
       let panels = gsap.utils.toArray(".container > section");
       let scrollTween = gsap.to(panels, {
         xPercent: -100 * panels.length,
@@ -63,25 +76,6 @@ function HomePage() {
         },
       });
 
-      gsap.fromTo(
-        ".singleImg",
-        {
-          scale: 0.5,
-        },
-        {
-          scale: 1,
-          duration: 3,
-          scrollTrigger: {
-            scrub: 0.1,
-            trigger: ".secondImageDiv",
-            containerAnimation: scrollTween,
-            start: "left center+=40%",
-            end: "left left+=5%",
-            toggleActions: "play none none reset",
-          },
-        }
-      );
-
       gsap
         .timeline({
           scrollTrigger: {
@@ -90,7 +84,6 @@ function HomePage() {
             end: "right left",
             scrub: true,
             containerAnimation: scrollTween,
-            markers: true,
           },
         })
         .to(".thanks-panel", { xPercent: 100, ease: "none" })
@@ -101,6 +94,81 @@ function HomePage() {
           },
           { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" },
           0
+        );
+
+      let images = gsap.utils.toArray(".roatedImageMain > div > div > img");
+
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: ".roatedDarkImageContainer",
+            start: "left right",
+            end: "right right",
+            containerAnimation: scrollTween,
+            scrub: true,
+          },
+        })
+        .to(
+          images,
+          {
+            scale: 2,
+          },
+          0
+        );
+
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: ".goodSectionMain",
+            start: "left right",
+            end: "center center+=20%",
+            scrub: true,
+            containerAnimation: scrollTween,
+            markers: true,
+          },
+        })
+        .fromTo(
+          ".singleImg",
+          {
+            scale: 0.5,
+            y: "-100%",
+          },
+          {
+            scale: 0.5,
+            y: 0,
+            stagger: 0.4,
+          }
+        )
+        .fromTo(
+          ".singleImg",
+          {
+            scale: 0.5,
+          },
+          {
+            scale: 1,
+            stagger: 0.4,
+          }
+        );
+
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: ".goodDiv",
+            start: "left right",
+            end: "center center+=20%",
+            scrub: true,
+            containerAnimation: scrollTween,
+            markers: true,
+          },
+        })
+        .fromTo(
+          ".goodDiv",
+          {
+            y: "100%",
+          },
+          {
+            y: 0,
+          }
         );
     }, component);
 
@@ -120,42 +188,54 @@ function HomePage() {
           ref={slider}
         >
           <Hero />
-          <DearDiv />
+
           <section className="mr-[100vw] bg-red-600  h-screen relative z-10 roatedImageMain block">
             <div className=" h-full flex items-start justify-start w-[100vw] thanks-panel">
               <div className="w-screen relative  h-screen flex justify-center items-center roatedImageContainer bg-background">
-                <div className=" firstImage h-[12rem] w-[13rem] absolute top-[15%] left-[10%]">
+                <div className=" firstImage h-[12rem] w-[13rem] absolute top-[15%] left-[10%]  overflow-hidden ">
                   <img
-                    className=""
+                    className="w-full h-full object-cover duration-300 object-center"
                     src="https://virtual-gallery.okeystudio.com/thanks-1.c050f96d.webp"
                   ></img>
                 </div>
 
-                <div className=" secondImage h-[10rem] w-[13rem] rotate-[-6deg] absolute top-[13%] right-[9%]">
-                  <img src="https://virtual-gallery.okeystudio.com/thanks-2.5b322fb7.webp"></img>
+                <div className=" secondImage h-[10rem] w-[13rem] rotate-[-6deg] absolute top-[13%] right-[9%]  overflow-hidden ">
+                  <img
+                    className="w-full h-full object-cover duration-300 object-center"
+                    src="https://virtual-gallery.okeystudio.com/thanks-2.5b322fb7.webp"
+                  ></img>
                 </div>
 
-                <div className="h-[9rem] thirdImage rotate-2 w-[13rem] absolute bottom-[16%] ">
-                  <img src="https://virtual-gallery.okeystudio.com/thanks-3.48846b1e.webp"></img>
+                <div className="h-[9rem] thirdImage rotate-2 w-[13rem] absolute bottom-[16%]  overflow-hidden  ">
+                  <img
+                    className="w-full h-full object-cover duration-300 object-center"
+                    src="https://virtual-gallery.okeystudio.com/thanks-3.48846b1e.webp"
+                  ></img>
                 </div>
                 <span className="uppercase text-[22rem] font-medium">
                   Thanks
                 </span>
               </div>
               <div className="w-screen absolute h-screen flex justify-center items-center roatedDarkImageContainer bg-dark">
-                <div className=" firstImage h-[12rem] w-[13rem] absolute top-[15%] left-[10%]">
+                <div className=" firstImage h-[12rem] w-[13rem] absolute top-[15%] left-[10%] overflow-hidden ">
                   <img
-                    className=""
+                    className="w-full h-full object-cover duration-300 object-center"
                     src="https://virtual-gallery.okeystudio.com/thanks-3bis.68c75dbb.webp"
                   ></img>
                 </div>
 
-                <div className=" secondImage h-[10rem] w-[13rem] rotate-[-6deg] absolute top-[13%] right-[9%]">
-                  <img src="https://virtual-gallery.okeystudio.com/thanks-2bis.0afa6688.webp"></img>
+                <div className=" secondImage h-[10rem] w-[13rem] rotate-[-6deg] absolute top-[13%] right-[9%]  overflow-hidden ">
+                  <img
+                    className="w-full h-full object-cover duration-300 object-center"
+                    src="https://virtual-gallery.okeystudio.com/thanks-2bis.0afa6688.webp"
+                  ></img>
                 </div>
 
-                <div className="h-[9rem] thirdImage rotate-2 w-[13rem] absolute bottom-[16%] ">
-                  <img src="https://virtual-gallery.okeystudio.com/thanks-1bis.a9fa8549.webp"></img>
+                <div className="h-[9rem] thirdImage rotate-2 w-[13rem] absolute bottom-[16%] overflow-hidden  ">
+                  <img
+                    className="w-full h-full object-cover duration-300 object-center"
+                    src="https://virtual-gallery.okeystudio.com/thanks-1bis.a9fa8549.webp"
+                  ></img>
                 </div>
                 <span className="uppercase text-[22rem] text-white font-medium">
                   Thanks
@@ -164,7 +244,7 @@ function HomePage() {
             </div>
           </section>
 
-          <section className="w-screen h-screen bg-background">
+          <section className="w-screen h-screen bg-background goodSectionMain">
             <div className="flex h-screen w-screen overflow-hidden secondImageDiv ">
               <div className="h-full singleImg">
                 <img
@@ -172,13 +252,13 @@ function HomePage() {
                   src="https://virtual-gallery.okeystudio.com/duo-photo1.589f3a05.webp"
                 ></img>
               </div>
-              <div className="h-full">
+              <div className="h-full singleImg">
                 <img
                   className="object-cover"
                   src="https://virtual-gallery.okeystudio.com/duo-photo2.94837066.webp"
                 ></img>
               </div>
-              <div className="flex flex-col h-full pt-12 p-4">
+              <div className="flex flex-col h-full pt-12 p-4 goodDiv">
                 <span className="text-[1.2rem] uppercase mb-[6px] font-semibold">
                   YOU’RE SO GOOD!
                 </span>
