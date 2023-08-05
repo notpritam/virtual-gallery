@@ -121,7 +121,7 @@ function HomePage() {
         >
           <Hero />
           <DearDiv />
-          <section className="min-w-[200vw] bg-red-600 w-[200vw] h-screen relative z-10 roatedImageMain block">
+          <section className="mr-[100vw] bg-red-600  h-screen relative z-10 roatedImageMain block">
             <div className=" h-full flex items-start justify-start w-[100vw] thanks-panel">
               <div className="w-screen relative  h-screen flex justify-center items-center roatedImageContainer bg-background">
                 <div className=" firstImage h-[12rem] w-[13rem] absolute top-[15%] left-[10%]">
