@@ -244,74 +244,113 @@ function HomePage() {
             </div>
           </section>
 
-          <section className="w-screen h-screen bg-background goodSectionMain">
-            <div className="flex h-screen w-screen overflow-hidden secondImageDiv ">
-              <div className="h-full singleImg">
-                <img
-                  className="object-cover "
-                  src="https://virtual-gallery.okeystudio.com/duo-photo1.589f3a05.webp"
-                ></img>
+          <section>
+            <section className="w-screen h-screen bg-background goodSectionMain">
+              <div className="flex h-screen w-screen overflow-hidden secondImageDiv ">
+                <div className="h-full singleImg">
+                  <img
+                    className="object-cover "
+                    src="https://virtual-gallery.okeystudio.com/duo-photo1.589f3a05.webp"
+                  ></img>
+                </div>
+                <div className="h-full singleImg">
+                  <img
+                    className="object-cover"
+                    src="https://virtual-gallery.okeystudio.com/duo-photo2.94837066.webp"
+                  ></img>
+                </div>
+                <div className="flex flex-col h-full pt-12 p-4 goodDiv">
+                  <span className="text-[1.2rem] uppercase mb-[6px] font-semibold">
+                    YOU’RE SO GOOD!
+                  </span>
+                  <span className="font-light text-[.8rem] ">
+                    First of all, thank you so much for sharing your photos with
+                    everyone, and secondly, thank you for being so awesome!
+                  </span>
+                  <img
+                    className="w-[13rem] h-[16rem]"
+                    src="https://virtual-gallery.okeystudio.com/sogood.da0ed801.webp"
+                  ></img>
+                </div>
               </div>
-              <div className="h-full singleImg">
-                <img
-                  className="object-cover"
-                  src="https://virtual-gallery.okeystudio.com/duo-photo2.94837066.webp"
-                ></img>
-              </div>
-              <div className="flex flex-col h-full pt-12 p-4 goodDiv">
-                <span className="text-[1.2rem] uppercase mb-[6px] font-semibold">
-                  YOU’RE SO GOOD!
-                </span>
-                <span className="font-light text-[.8rem] ">
-                  First of all, thank you so much for sharing your photos with
-                  everyone, and secondly, thank you for being so awesome!
-                </span>
-                <img
-                  className="w-[13rem] h-[16rem]"
-                  src="https://virtual-gallery.okeystudio.com/sogood.da0ed801.webp"
-                ></img>
-              </div>
-            </div>
-          </section>
+            </section>
+            <section className="w-screen h-screen bg-background">
+              <div className="h-screen w-screen relative">
+                <div className="absolute top-[10%] left-[5%] h-[32vh] w-[14rem] ">
+                  <img
+                    className="object-cover h-full w-full"
+                    src="https://virtual-gallery.okeystudio.com/groupe-left3.efb189cc.webp"
+                  ></img>
+                </div>
+                <div className="absolute bottom-[10%] left-[8%] h-[32vh] w-[14rem] ">
+                  <img
+                    className="object-cover h-full w-full"
+                    src="https://virtual-gallery.okeystudio.com/groupe-left1.c49c55ae.webp"
+                  ></img>
+                </div>
 
-          <section className="w-screen h-screen bg-background">
-            <div className="h-screen w-screen relative">
-              <div className="absolute top-[10%] left-[5%] h-[32vh] w-[14rem] ">
-                <img
-                  className="object-cover h-full w-full"
-                  src="https://virtual-gallery.okeystudio.com/groupe-left3.efb189cc.webp"
-                ></img>
-              </div>
-              <div className="absolute bottom-[10%] left-[8%] h-[32vh] w-[14rem] ">
-                <img
-                  className="object-cover h-full w-full"
-                  src="https://virtual-gallery.okeystudio.com/groupe-left1.c49c55ae.webp"
-                ></img>
-              </div>
+                <div className="absolute right-[10%] top-[3%] h-[34vh] w-[14rem] ">
+                  <img
+                    className="object-cover h-full w-full"
+                    src="https://virtual-gallery.okeystudio.com/groupe-left2.b48efad2.webp"
+                  ></img>
+                </div>
 
-              <div className="absolute right-[10%] top-[3%] h-[34vh] w-[14rem] ">
-                <img
-                  className="object-cover h-full w-full"
-                  src="https://virtual-gallery.okeystudio.com/groupe-left2.b48efad2.webp"
-                ></img>
-              </div>
+                <div className="absolute left-[50%] translate-x-[-50%] translate-y-[-50%] top-[50%] h-full w-[40%] ">
+                  <img
+                    className="object-cover h-full w-full"
+                    src="https://virtual-gallery.okeystudio.com/groupe-centre1.3e60ca62.webp"
+                  ></img>
+                </div>
 
-              <div className="absolute left-[50%] translate-x-[-50%] translate-y-[-50%] top-[50%] h-full w-[40%] ">
-                <img
-                  className="object-cover h-full w-full"
-                  src="https://virtual-gallery.okeystudio.com/groupe-centre1.3e60ca62.webp"
-                ></img>
+                <div className="absolute bottom-[10%] right-[5%] h-[40vh] w-[18rem] ">
+                  <img
+                    className="object-cover h-full w-full"
+                    src="https://virtual-gallery.okeystudio.com/groupe-right1.da033ec5.webp"
+                  ></img>
+                </div>
               </div>
-
-              <div className="absolute bottom-[10%] right-[5%] h-[40vh] w-[18rem] ">
-                <img
-                  className="object-cover h-full w-full"
-                  src="https://virtual-gallery.okeystudio.com/groupe-right1.da033ec5.webp"
-                ></img>
-              </div>
-            </div>
+            </section>
           </section>
         </div>
+
+        {/* <section className="w-screen h-screen bg-background">
+          <div className="h-screen w-screen relative">
+            <div className="absolute top-[10%] left-[5%] h-[32vh] w-[14rem] ">
+              <img
+                className="object-cover h-full w-full"
+                src="https://virtual-gallery.okeystudio.com/groupe-left3.efb189cc.webp"
+              ></img>
+            </div>
+            <div className="absolute bottom-[10%] left-[8%] h-[32vh] w-[14rem] ">
+              <img
+                className="object-cover h-full w-full"
+                src="https://virtual-gallery.okeystudio.com/groupe-left1.c49c55ae.webp"
+              ></img>
+            </div>
+
+            <div className="absolute right-[10%] top-[3%] h-[34vh] w-[14rem] ">
+              <img
+                className="object-cover h-full w-full"
+                src="https://virtual-gallery.okeystudio.com/groupe-left2.b48efad2.webp"
+              ></img>
+            </div>
+
+            <div className="absolute left-[50%] translate-x-[-50%] translate-y-[-50%] top-[50%] h-full w-[40%] ">
+              <img
+                className="object-cover h-full w-full"
+                src="https://virtual-gallery.okeystudio.com/groupe-centre1.3e60ca62.webp"
+              ></img>
+            </div>
+
+            <div className="absolute bottom-[10%] right-[5%] h-[40vh] w-[18rem] ">
+              <img
+                className="object-cover h-full w-full"
+                src="https://virtual-gallery.okeystudio.com/groupe-right1.da033ec5.webp"
+              ></img>
+            </div>
+          </div>
+        </section> */}
       </div>
     </>
   );
