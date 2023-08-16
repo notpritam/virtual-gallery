@@ -175,7 +175,7 @@ function HomePage() {
           scrollTrigger: {
             trigger: ".maxImagesContainer",
             start: "top center",
-            end: "top top",
+            end: "top center-=20%",
             scrub: true,
             markers: true,
           },
@@ -186,20 +186,88 @@ function HomePage() {
             scale: 0,
           },
           {
-            scale: 0.5,
+            scale: 0.7,
             bottom: "30% ",
           }
-        )
-        .to(".maxImage1", {
-          scale: 1,
-          left: "10%",
-          bottom: 0,
+        );
+
+      gsap
+        .timeline({
+          delay: 0,
+          scrollTrigger: {
+            trigger: ".maxImagesContainer",
+            start: "top center-=20%",
+            end: "top top",
+            scrub: true,
+            markers: true,
+          },
         })
-        .to(".maxImage2", {
-          scale: 1,
-          right: "0%",
-          bottom: "0",
-        });
+        .fromTo(
+          ".maxImage1",
+          {
+            x: "10vw",
+            y: "-10vh",
+          },
+          {
+            scale: 1,
+            x: "-40vw",
+            y: "10vh",
+          },
+          "start"
+        )
+        .fromTo(
+          ".maxImage2",
+          {
+            x: "10vw",
+            y: "5vh",
+          },
+          {
+            scale: 1,
+            x: "40vw",
+            y: "20%",
+          },
+          "start"
+        )
+        .fromTo(
+          ".maxImage3",
+          {
+            x: "-10vw",
+            y: "-20vh",
+          },
+          {
+            scale: 1,
+            x: "-36vw",
+            y: "-42vh",
+          },
+          "start"
+        )
+        .fromTo(
+          ".maxImage4",
+          {
+            x: "0",
+            y: "0",
+          },
+          {
+            scale: 1,
+            x: 0,
+            y: 0,
+          },
+          "start"
+        )
+        .fromTo(
+          ".maxImage5",
+          {
+            x: "10vw",
+            y: "10vh",
+          },
+          {
+            scale: 1,
+            x: "37vw",
+            y: "-27vh",
+          },
+
+          "start"
+        );
     }, component);
 
     return () => ctx.revert();
