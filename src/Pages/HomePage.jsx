@@ -475,8 +475,6 @@ function HomePage() {
               </div>
             </div>
           </section>
-
-          {/* Second Image Container  */}
         </section>
       </div>
     </>
