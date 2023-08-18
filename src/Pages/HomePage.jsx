@@ -5,17 +5,32 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Hero from "../Components/Hero";
 import DearDiv from "../Components/DearDiv";
 import Lenis from "@studio-freight/lenis";
+// import ScrollSmoother from "gsap/ScrollSmoother";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function HomePage() {
   const component = useRef();
+  const component2 = useRef();
+  const slider2 = useRef();
   const slider = useRef();
+
+  // useEffect(() => {
+  //   (async () => {
+  //     const LocomotiveScroll = (await import("locomotive-scroll")).default;
+  //     const locomotiveScroll = new LocomotiveScroll();
+  //   })();
+  // }, []);
 
   useLayoutEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
+      direction: "vertical",
+      gestureDirection: "vertical",
+      smooth: true,
+      smoothTouch: false,
+      touchMultiplier: 2,
     });
 
     function raf(time) {
@@ -24,6 +39,7 @@ function HomePage() {
     }
 
     requestAnimationFrame(raf);
+
     let ctx = gsap.context(() => {
       let panels = gsap.utils.toArray(".container > section");
       let scrollTween = gsap.to(panels, {
@@ -37,9 +53,6 @@ function HomePage() {
           invalidateOnRefresh: true,
         },
       });
-      // ScrollTrigger.defaults({
-      //   markers: { startColor: "red", endColor: "purple" },
-      // });
 
       gsap.to(".firstImage", {
         transform: "rotate(10deg)",
@@ -104,7 +117,7 @@ function HomePage() {
             start: "center+=20% bottom",
             end: "bottom bottom",
             scrub: true,
-            markers: true,
+            // markers: true,
           },
         })
         .to(
@@ -273,7 +286,110 @@ function HomePage() {
         );
     }, component);
 
-    return () => ctx.revert();
+    let ctx2 = gsap.context(() => {
+      let panels2 = gsap.utils.toArray(".container2 > section");
+      let scrollTween2 = gsap.to(panels2, {
+        xPercent: -100 * panels2.length,
+        ease: "none",
+        scrollTrigger: {
+          trigger: slider2.current,
+          pin: true,
+          scrub: true,
+          end: "+=3000",
+          invalidateOnRefresh: true,
+        },
+      });
+
+      gsap.to(".image1", {
+        top: "0%",
+        scrollTrigger: {
+          trigger: ".floatingImagesCollection",
+          start: "top bottom",
+          end: "bottom center",
+          scrub: true,
+        },
+      });
+
+      gsap.to(".image2", {
+        top: "20%",
+        scrollTrigger: {
+          trigger: ".floatingImagesCollection",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+
+      gsap.to(".image3", {
+        y: "-80%",
+        scrollTrigger: {
+          trigger: ".floatingImagesCollection",
+          start: "top bottom",
+          end: "bottom center",
+          scrub: true,
+        },
+      });
+
+      gsap.to(".insideImg1", {
+        top: "0",
+        scrollTrigger: {
+          trigger: ".imagesContainerDiv1",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+          // markers: true,
+        },
+      });
+
+      gsap.to(".insideImg2", {
+        top: "-10%",
+        scrollTrigger: {
+          trigger: ".imagesContainerDiv1",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+          // markers: true,
+        },
+      });
+
+      gsap.to(".insideImg3", {
+        top: "0%",
+        scrollTrigger: {
+          trigger: ".imagesContainerDiv1",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+          // markers: true,
+        },
+      });
+
+      gsap.to(".insideImg4", {
+        bottom: "5%",
+        scrollTrigger: {
+          trigger: ".imagesContainerDiv1",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+          // markers: true,
+        },
+      });
+
+      gsap.to(".insideImg5", {
+        bottom: "0%",
+        scrollTrigger: {
+          trigger: ".imagesContainerDiv1",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+          // markers: true,
+        },
+      });
+    }, component2);
+
+    return () => {
+      ctx.revert();
+      ctx2.revert();
+    };
   });
 
   return (
@@ -376,43 +492,6 @@ function HomePage() {
               </div>
             </section>
           </section>
-          {/* <section className="w-screen h-screen bg-background">
-              <div className="h-screen w-screen relative">
-                <div className="absolute top-[10%] left-[5%] h-[32vh] w-[14rem] ">
-                  <img
-                    className="object-cover h-full w-full"
-                    src="https://virtual-gallery.okeystudio.com/groupe-left3.efb189cc.webp"
-                  ></img>
-                </div>
-                <div className="absolute bottom-[10%] left-[8%] h-[32vh] w-[14rem] ">
-                  <img
-                    className="object-cover h-full w-full"
-                    src="https://virtual-gallery.okeystudio.com/groupe-left1.c49c55ae.webp"
-                  ></img>
-                </div>
-
-                <div className="absolute right-[10%] top-[3%] h-[34vh] w-[14rem] ">
-                  <img
-                    className="object-cover h-full w-full"
-                    src="https://virtual-gallery.okeystudio.com/groupe-left2.b48efad2.webp"
-                  ></img>
-                </div>
-
-                <div className="absolute left-[50%] translate-x-[-50%] translate-y-[-50%] top-[50%] h-full w-[40%] ">
-                  <img
-                    className="object-cover h-full w-full"
-                    src="https://virtual-gallery.okeystudio.com/groupe-centre1.3e60ca62.webp"
-                  ></img>
-                </div>
-
-                <div className="absolute bottom-[10%] right-[5%] h-[40vh] w-[18rem] ">
-                  <img
-                    className="object-cover h-full w-full"
-                    src="https://virtual-gallery.okeystudio.com/groupe-right1.da033ec5.webp"
-                  ></img>
-                </div>
-              </div>
-            </section> */}
         </div>
 
         <section className="h-[250vh] z-10 w-full relative flex  flex-col align-top items-start bgContainerImages">
@@ -422,7 +501,7 @@ function HomePage() {
             <div className="h-screen  w-screen sticky top-0 ">
               <div className="absolute overflow-hidden top-[50%] z-1 left-[50%] translate-x-[-50%] translate-y-[-50%] h-[32vh] w-[14rem] singleImageinMax maxImage1 ">
                 <img
-                  className="object-cover h-full w-full "
+                  className="object-cover  h-full w-full "
                   src="https://virtual-gallery.okeystudio.com/groupe-left3.efb189cc.webp"
                 ></img>
                 <img
@@ -477,6 +556,127 @@ function HomePage() {
           </section>
         </section>
       </div>
+
+      <div className="component2 relative" ref={component2}>
+        <section className="w-screen min-h-screen relative floatingImagesCollection">
+          <img
+            src="https://virtual-gallery.okeystudio.com/groupe-left4-scroll2.08f0a4a8.webp"
+            className="h-[30vh] absolute bottom-[-80%]  image1"
+          ></img>
+
+          <img
+            src="https://virtual-gallery.okeystudio.com/groupe-left4-scroll.e4021ce3.webp"
+            className="h-[40vh] absolute left-[40%] bottom-[-60%] image2 "
+            // data-scroll
+            // data-scroll-speed="0.2"
+          ></img>
+
+          <img
+            src="https://virtual-gallery.okeystudio.com/groupe-right3.28a39d37.webp"
+            className="h-[40vh] absolute top-[30%] right-[6%] image3 "
+            data-scroll
+            data-scroll-speed="0.4"
+          ></img>
+          <img
+            src="https://virtual-gallery.okeystudio.com/groupe-left4-scroll3.0288eb04.webp"
+            className="h-[40vh] absolute bottom-[-25%] right-[6%] image3 "
+            data-scroll
+            data-scroll-speed="0.2"
+          ></img>
+
+          <img
+            src="https://virtual-gallery.okeystudio.com/groupe-end.6ec43181.webp"
+            className="h-[40vh] absolute bottom-[-10%] left-[7%] image3"
+            data-scroll
+            data-scroll-speed="0.4"
+          ></img>
+        </section>
+        <div
+          className="h-screen relative flex flex-row flex-nowrap container2"
+          ref={slider2}
+        >
+          <section className="h-screen relative w-screen  flex-shrink-0 imagesContainerDiv1">
+            <img
+              src="https://virtual-gallery.okeystudio.com/groupe-left4-scroll2.08f0a4a8.webp"
+              className="h-[30vh] absolute bottom-[-80%] left-[3%] insideImg1"
+              data-scroll
+              data-scroll-speed="0.3"
+            ></img>
+
+            <img
+              src="https://virtual-gallery.okeystudio.com/groupe-left4-scroll.e4021ce3.webp"
+              className="h-[40vh] absolute left-[43%] bottom-[-50%]  insideImg2"
+              data-scroll
+              data-scroll-speed="0.2"
+            ></img>
+
+            <img
+              src="https://virtual-gallery.okeystudio.com/groupe-right3.28a39d37.webp"
+              className="h-[40vh] absolute top-[50%] right-[12%] insideImg3 "
+              data-scroll
+              data-scroll-speed="0.4"
+            ></img>
+            <img
+              src="https://virtual-gallery.okeystudio.com/groupe-left4-scroll3.0288eb04.webp"
+              className="h-[40vh] absolute   bottom-[-80%] right-[0%]  insideImg4"
+              data-scroll
+              data-scroll-speed="0.2"
+            ></img>
+
+            <img
+              src="https://virtual-gallery.okeystudio.com/groupe-end.6ec43181.webp"
+              className="h-[40vh] absolute bottom-[-50%] left-[7%] insideImg5 "
+              data-scroll
+              data-scroll-speed="0.4"
+            ></img>
+          </section>
+
+          <section className="ml-[30vw] h-screen w-screen flex  flex-shrink-0">
+            <div className="flex justify-between items-end w-screen">
+              <div className="bg-black h-[30vh] text-white flex flex-col justify-between p-4  w-[40vw] text-[14px]">
+                <div className="bg-black text-white flex justify-between items-center">
+                  <span>
+                    WELCOME TO OUR SMALL VIRTUAL PHOTOGRAPHIC GALLERY.
+                  </span>
+                  <img
+                    className="h-[24px] w-[24px]"
+                    src="https://virtual-gallery.okeystudio.com/favorite-light.5085079f.png"
+                  ></img>
+                </div>
+
+                <div className=" font-thin">
+                  <span>
+                    Hi, we are Okey Studio, a French digital studio. We want to
+                    talk to you about our relationship with nice photos. For us
+                    photographers are artists and their pictures are so
+                    inspiring. It pushes us to make great work in our turn!
+                  </span>
+                </div>
+              </div>
+              <div className="flex flex-col h-full">
+                <div className="h-full w-[40vw] overflow-hidden">
+                  <img src="https://virtual-gallery.okeystudio.com/sand1.14687ab1.webp"></img>
+                </div>
+                <div className="h-full w-[40vw] overflow-hidden">
+                  <img src="https://virtual-gallery.okeystudio.com/sand1.14687ab1.webp"></img>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* <section className="h-screen w-screen  flex-shrink-0"></section>
+          <section className="h-screen w-screen flex-shrink-0"></section> */}
+        </div>
+      </div>
+
+      {/* <section ref={component2} className="relative">
+        <div
+          className=" relative flex flex-nowrap bg-slate-400 secondSliders"
+          ref={slider2}
+        >
+         
+        </div>
+      </section> */}
     </>
   );
 }
