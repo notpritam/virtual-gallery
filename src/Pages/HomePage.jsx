@@ -101,19 +101,20 @@ function HomePage() {
         .timeline({
           scrollTrigger: {
             trigger: ".bgContainerImages",
-            start: "center bottom",
+            start: "center+=20% bottom",
             end: "bottom bottom",
             scrub: true,
             markers: true,
           },
         })
-        .fromTo(
-          ".hiddenDivImages",
+        .to(
+          ".hiddenDivImage",
+          // {
+          //   clipPath: "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)",
+          // },
           {
-            clipPath: "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)",
-          },
-          { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" },
-          0
+            clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+          }
         );
 
       //normal
@@ -344,7 +345,7 @@ function HomePage() {
             </div>
           </section>
 
-          <section className="h-[200vh]  bg-black relative">
+          <section className="h-[200vh]  relative">
             <section className="w-screen h-screen  goodSectionMain ">
               <div className="flex h-screen w-screen overflow-hidden secondImageDiv ">
                 <div className="h-full singleImg">
@@ -414,84 +415,68 @@ function HomePage() {
             </section> */}
         </div>
 
-        <section className="h-[250vh] w-full bg-red-400 flex align-top items-start bgContainerImages">
-          <section className="w-screen h-[150vh] sticky top-0 z-10  bg-red-400 maxImagesContainer ">
+        <section className="h-[250vh] z-10 w-full relative flex  flex-col align-top items-start bgContainerImages">
+          <section className="w-screen h-[150vh] sticky top-0 z-9 maxImagesContainer ">
             {/* First Image Container */}
 
-            <div className="h-screen w-screen sticky top-0 bg-black ">
-              <div className="absolute top-[50%] z-1 left-[50%] translate-x-[-50%] translate-y-[-50%] h-[32vh] w-[14rem] singleImageinMax maxImage1 ">
+            <div className="h-screen  w-screen sticky top-0 ">
+              <div className="absolute overflow-hidden top-[50%] z-1 left-[50%] translate-x-[-50%] translate-y-[-50%] h-[32vh] w-[14rem] singleImageinMax maxImage1 ">
                 <img
                   className="object-cover h-full w-full "
                   src="https://virtual-gallery.okeystudio.com/groupe-left3.efb189cc.webp"
                 ></img>
+                <img
+                  className="object-cover absolute top-0 left-0 bottom-0 right-0 h-full w-full hiddenDivImage "
+                  src="https://virtual-gallery.okeystudio.com/groupe-left1-v2.35b78d82.webp"
+                ></img>
               </div>
-              <div className="absolute z-[2] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]   h-[32vh] w-[14rem] singleImageinMax maxImage2 ">
+              <div className="absolute overflow-hidden z-[2] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]   h-[32vh] w-[14rem] singleImageinMax maxImage2 ">
                 <img
                   className="object-cover h-full w-full "
                   src="https://virtual-gallery.okeystudio.com/groupe-left1.c49c55ae.webp"
                 ></img>
-              </div>
-
-              <div className="absolute z-[3] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]   h-[34vh] w-[14rem] singleImageinMax  maxImage3">
                 <img
-                  className="object-cover h-full w-full    "
-                  src="https://virtual-gallery.okeystudio.com/groupe-left2.b48efad2.webp"
-                ></img>
-              </div>
-
-              <div className="absolute z-[4] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]   singleImageinMax  h-full w-[40%]   maxImage4">
-                <img
-                  className="object-cover h-full w-full    "
-                  src="https://virtual-gallery.okeystudio.com/groupe-centre1.3e60ca62.webp"
-                ></img>
-              </div>
-
-              <div className="absolute z-[5] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]  singleImageinMax  h-[40vh] w-[18rem]  maxImage5">
-                <img
-                  className="object-cover h-full w-full    "
-                  src="https://virtual-gallery.okeystudio.com/groupe-right1.da033ec5.webp"
-                ></img>
-              </div>
-            </div>
-
-            {/* Second Image Container  */}
-
-            <div className="h-screen w-screen absolute top-0 hiddenDivImages bg-black ">
-              <div className="absolute top-[50%] z-1 left-[50%] translate-x-[-50%] translate-y-[-50%] h-[32vh] w-[14rem] singleImageinMax maxImage1 ">
-                <img
-                  className="object-cover h-full w-full "
-                  src="https://virtual-gallery.okeystudio.com/groupe-centre2.24043a60.webp"
-                ></img>
-              </div>
-              <div className="absolute z-[2] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]   h-[32vh] w-[14rem] singleImageinMax maxImage2 ">
-                <img
-                  className="object-cover h-full w-full "
+                  className="object-cover absolute top-0 left-0 bottom-0 right-0 h-full w-full hiddenDivImage "
                   src="https://virtual-gallery.okeystudio.com/groupe-left2-v2.00b0dbc2.webp"
                 ></img>
               </div>
 
-              <div className="absolute z-[3] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]   h-[34vh] w-[14rem] singleImageinMax  maxImage3">
+              <div className="absolute z-[3] overflow-hidden top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]   h-[34vh] w-[14rem] singleImageinMax  maxImage3">
                 <img
                   className="object-cover h-full w-full    "
+                  src="https://virtual-gallery.okeystudio.com/groupe-left2.b48efad2.webp"
+                ></img>
+                <img
+                  className="object-cover absolute top-0 left-0 bottom-0 right-0 h-full w-full hiddenDivImage "
                   src="https://virtual-gallery.okeystudio.com/groupe-left3-v2.b32f9c0a.webp"
                 ></img>
               </div>
 
-              <div className="absolute z-[4] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]   singleImageinMax  h-full w-[40%]   maxImage4">
+              <div className="absolute overflow-hidden z-[4] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]   singleImageinMax  h-full w-[40%]   maxImage4">
                 <img
                   className="object-cover h-full w-full    "
+                  src="https://virtual-gallery.okeystudio.com/groupe-centre1.3e60ca62.webp"
+                ></img>
+                <img
+                  className="object-cover absolute top-0 left-0 bottom-0 right-0 h-full w-full hiddenDivImage "
                   src="https://virtual-gallery.okeystudio.com/groupe-centre2.24043a60.webp"
                 ></img>
               </div>
 
-              <div className="absolute z-[5] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]  singleImageinMax  h-[40vh] w-[18rem]  maxImage5">
+              <div className="absolute overflow-hidden z-[5] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]  singleImageinMax  h-[40vh] w-[18rem]  maxImage5">
                 <img
                   className="object-cover h-full w-full    "
+                  src="https://virtual-gallery.okeystudio.com/groupe-right1.da033ec5.webp"
+                ></img>
+                <img
+                  className="object-cover absolute top-0 left-0 bottom-0 right-0 h-full w-full hiddenDivImage "
                   src="https://virtual-gallery.okeystudio.com/groupe-right2.8c20aca0.webp"
                 ></img>
               </div>
             </div>
           </section>
+
+          {/* Second Image Container  */}
         </section>
       </div>
     </>
